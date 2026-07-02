@@ -31,3 +31,7 @@ library("ronxmaps")
 BorahPeak_kml <- ronxmaps::BorahPeak_kml
 BorahPeak_kml <- sf::st_set_crs(BorahPeak_kml,"wgs84")
 usethis::use_data(BorahPeak_kml,internal = F,overwrite = T)
+
+
+## Github
+usethis::use_git()
