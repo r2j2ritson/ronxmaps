@@ -12,9 +12,10 @@ usethis::use_package("jsonlite", min_version = TRUE)
 usethis::use_package("sf", min_version = TRUE)
 usethis::use_package("httr2", min_version = TRUE)
 usethis::use_package("purrr", min_version = TRUE)
+usethis::use_package("curl", min_version = TRUE)
 #usethis::use_latest_dependencies()
 
-#devtools::load_all()
+devtools::load_all()
 
 ## Create and Load Data Objects to package
 BorahPeakTrail_kml <- sf::st_read("C:\\Users\\r2j2r\\Downloads\\BORAH_TEST_LINE_OnX.kml")
@@ -34,4 +35,6 @@ usethis::use_data(BorahPeak_kml,internal = F,overwrite = T)
 
 
 ## Github
-usethis::use_git()
+usethis::use_github()
+remotes::install_github("r2j2ritson/ronxmaps")
+

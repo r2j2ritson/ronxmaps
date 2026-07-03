@@ -68,7 +68,7 @@ onx_list_markups <- function(markup_type = c("waypoints", "tracks", "lines", "sh
     query = list(limit = limit)
   )
   if(parse){
-    parsed <- purrr::map_dfr(foo,parse_markups)
+    parsed <- purrr::map_dfr(onx_markups,parse_markups)
     if(include.notes){
       parsed <- parsed %>%
         dplyr::select(name,type,uuid,updated_at,geo_json.geometry.type,geo_json.type,created_at,notes,has_active_shares) %>%
@@ -102,7 +102,7 @@ onx_content_collections <- function(type = "hunt",
     query = list(type = type, includeEntities = tolower(as.character(include_entities)))
   )
   if(parse){
-    parsed <- purrr::map_dfr(foo,parse_markups) %>%
+    parsed <- purrr::map_dfr(onx_content,parse_markups) %>%
       as.data.frame()
     return(parsed)
   }else{

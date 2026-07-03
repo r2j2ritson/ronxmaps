@@ -10,6 +10,7 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 8.0.0
 Imports: 
     chromote (>= 0.5.1),
+    curl (>= 7.1.0),
     dplyr (>= 1.2.1),
     httr2 (>= 1.2.3),
     jsonlite (>= 2.0.0),
