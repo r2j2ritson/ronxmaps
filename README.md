@@ -1,7 +1,7 @@
-## An R interface for managing OnX Web Maps accounts
+## An R interface for managing OnX Web Maps 
 <img width="300" height="300" alt="ChatGPT Image Jul 3, 2026, 12_03_01 PM" src="https://github.com/user-attachments/assets/11b66ea5-351d-4b3b-a30b-722a9bde2c2a" />
 
-Under active development. 
+Under active development. Manage files in your OnX Web Maps account, format and convert KML files, and import features to access from your mobile app.
 
 ### Install development version
 remotes::install_github("r2j2ritson/ronxmaps")
