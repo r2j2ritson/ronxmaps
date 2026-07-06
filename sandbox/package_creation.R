@@ -41,4 +41,11 @@ usethis::pr_resume()
 usethis::pr_init("working")
 remotes::install_github("r2j2ritson/ronxmaps")
 
-
+## Terminal commands for committing changes
+# git add .
+# git commit -m "Descriptive commit message."
+# git push origin
+## Try inside script
+system("git add .")
+system('git commit -m "Automated commit from R script"')
+system("git push origin")

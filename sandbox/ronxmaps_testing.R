@@ -22,7 +22,7 @@ terra::plet(foo)
 
 foo2 <- foo[which(foo$name == "67P"),]
 
-foo <- ronxmaps::onx_list_markups(markup_type = c("waypoints","shapes"),parse=T)
+foo <- onx_list_markups(markup_type = c("waypoints","shapes"),parse=T)
 parsed <- purrr::map_dfr(foo,parse_markups)
 
 foo2 <- foo[[1]]

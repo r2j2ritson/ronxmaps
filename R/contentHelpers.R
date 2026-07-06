@@ -62,7 +62,12 @@ onx_list_markups <- function(markup_type = c("waypoints", "tracks", "shapes"),
                              limit = 1000,
                              token = Sys.getenv("ONX_TOKEN", unset = ""),
                              parse = T, include.notes = F) {
-  markup_type <- match.arg(markup_type)
+  tryCatch({
+    markup_type <- match.arg(markup_type)
+  }, error = function(e){
+    stop("`markup_type` must be ONE of 'waypoints', 'tracks', or 'shapes'!",call. = F)
+  })
+
   onx_markups <- onx_api_request(
     path = paste0("v1/markups/", markup_type),
     token = token,
