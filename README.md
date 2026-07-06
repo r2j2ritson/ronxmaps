@@ -35,7 +35,5 @@ ronxmaps::import_kml2OnX(file = file, token = Sys.getenv("ONX_TOKEN", unset = ""
 
 ## Planned functions under development
 - formatting and saving shapefiles as KML files
-- deleting selected files
 - folder management
 - sharing files with other users
-- viewing selected files in R (with leaflet)
