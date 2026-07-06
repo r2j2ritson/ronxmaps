@@ -134,7 +134,8 @@ getToken <- function(onx_email = Sys.getenv("ONX_EMAIL"),
     if(length(storage) == 0){
       stop("Failed to acquire access token.")
     }
-    obj <- jsonlite::fromJSON(storage[[2]])
+    oidc_user <- names(storage)[grepl("oidc.user",names(storage))]
+    obj <- jsonlite::fromJSON(storage[[oidc_user]])
 
     tkn_arg <- list(obj$access_token)
     names(tkn_arg) <- "ONX_TOKEN"
