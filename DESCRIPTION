@@ -14,9 +14,11 @@ Imports:
     dplyr (>= 1.2.1),
     httr2 (>= 1.2.3),
     jsonlite (>= 2.0.0),
+    leaflet (>= 2.2.3.9000),
     purrr (>= 1.2.2),
     rvest (>= 1.0.5),
-    sf (>= 1.1-1)
+    sf (>= 1.1-1),
+    terra (>= 1.9.38)
 Depends: 
     R (>= 3.5)
 LazyData: true
