@@ -41,37 +41,6 @@ getToken <- function(onx_email = Sys.getenv("ONX_EMAIL"),
 
     b$Page$navigate(url, wait_ = F)
 
-  #   shadow_js <- sprintf("
-  #   (function() {
-  #     function findElementDeep(selector, root = document) {
-  #       let el = root.querySelector(selector);
-  #       if (el) return el;
-  #
-  #       const allElements = root.querySelectorAll('*');
-  #       for (const element of allElements) {
-  #         if (element.shadowRoot) {
-  #           el = findElementDeep(selector, element.shadowRoot);
-  #           if (el) return el;
-  #         }
-  #       }
-  #       return null;
-  #     }
-  #
-  #     const emailField = findElementDeep('input[name=\"identifier\"]');
-  #     const passwordField = findElementDeep('input[name=\"password\"]');
-  #     const submitBtn = findElementDeep('button[name=\"method\"][value=\"password\"]');
-  #
-  #     if (!emailField || !passwordField || !submitBtn) {
-  #       return 'Missing elements: email=' + !!emailField + ', pass=' + !!passwordField + ', btn=' + !!submitBtn;
-  #     }
-  #
-  #     emailField.value = %s;
-  #     passwordField.value = %s;
-  #     submitBtn.click();
-  #     return {ok: true};
-  #   })();
-  # ", jsonlite::toJSON(onx_email),jsonlite::toJSON(onx_password))
-
     email_js <- jsonlite::toJSON(onx_email, auto_unbox = TRUE)
     pass_js  <- jsonlite::toJSON(onx_password, auto_unbox = TRUE)
     shadow_js2 <- paste0("
@@ -120,11 +89,24 @@ getToken <- function(onx_email = Sys.getenv("ONX_EMAIL"),
 })();
 ")
 
-    Sys.sleep(3)
+    #Sys.sleep(5)
+    message("Logging in to OnX Web Maps...")
+    pb <- utils::txtProgressBar(min = 0, max=5,style = 3,char=">")
+    for(i in 1:5){
+      Sys.sleep(1)
+      utils::setTxtProgressBar(pb, i)
+    }
+    close(pb)
     b$Runtime$evaluate(shadow_js2, returnByValue = T)
 
-    Sys.sleep(5)
-
+    #Sys.sleep(10)
+    message("Finding Access Token...")
+    pb2 <- utils::txtProgressBar(min = 0, max=5,style = 3,char=">")
+    for(i in 1:10){
+      Sys.sleep(1)
+      utils::setTxtProgressBar(pb2, i)
+    }
+    close(pb2)
     res <- b$Runtime$evaluate(
       expression = "JSON.stringify(window.localStorage)",
       returnByValue = T
