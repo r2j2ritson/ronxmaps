@@ -1,6 +1,7 @@
 ## ronxmaps testing
+remotes::install_github("r2j2ritson/ronxmaps")
 library("ronxmaps")
-ronxmaps::BorahPeak_kml
+#ronxmaps::BorahPeak_kml
 
 ronxmaps::setCredentials("robert.ritson@idfg.idaho.gov","IDFG2020")
 ronxmaps::getToken(onx_email = Sys.getenv("ONX_EMAIL"),

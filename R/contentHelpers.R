@@ -93,6 +93,18 @@ onx_list_markups <- function(markup_type = c("waypoints", "tracks", "shapes"),
   }
 }
 
+#' Helper function for parsing markup files
+#' @export parse_markups
+parse_folders <- function(x){
+  out <- as.data.frame(unlist(x)) %>%
+    tibble::rownames_to_column(.) %>%
+    `colnames<-`(.,c("rowname","vals")) %>%
+    tidyr::pivot_wider(names_from = rowname,
+                       values_from = vals) %>%
+    as.data.frame()
+  return(out)
+}
+
 #' Fetch OnX content collections for the current account.
 #'
 #' @param type Character content collection type, default "hunt".
@@ -110,7 +122,7 @@ onx_content_collections <- function(type = "hunt",
     query = list(type = type, includeEntities = tolower(as.character(include_entities)))
   )
   if(parse){
-    parsed <- purrr::map_dfr(onx_content,parse_markups) %>%
+    parsed <- purrr::map_dfr(onx_content,parse_folders) %>%
       as.data.frame()
     return(parsed)
   }else{
