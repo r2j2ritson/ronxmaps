@@ -2,7 +2,7 @@
 % Please edit documentation in R/delete_markup.R
 \name{delete_markup}
 \alias{delete_markup}
-\title{Import KML file to OnX Web Maps}
+\title{Delete Markup file from OnX Web Maps}
 \usage{
 delete_markup(uuid, token = Sys.getenv("ONX_TOKEN", unset = ""))
 }
@@ -15,7 +15,7 @@ delete_markup(uuid, token = Sys.getenv("ONX_TOKEN", unset = ""))
 Message if delete request was successful or HTTP error code if failed.
 }
 \description{
-Use valid OnX Web Maps access token to import a KML file to the web app via the API.
+Use valid OnX Web Maps access token to delete a markup file from the web app via the API.
 }
 \note{
 If the token is stale, then this function will not work. Refresh by re-running \code{getToken} then re-run function.
