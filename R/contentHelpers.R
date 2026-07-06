@@ -71,12 +71,14 @@ onx_list_markups <- function(markup_type = c("waypoints", "tracks", "lines", "sh
     parsed <- purrr::map_dfr(onx_markups,parse_markups)
     if(include.notes){
       parsed <- parsed %>%
-        dplyr::select(name,type,uuid,updated_at,geo_json.geometry.type,geo_json.type,created_at,notes,has_active_shares) %>%
+        coords_as_sf(.,"geo_json.geometry.coordinates1","geo_json.geometry.coordinates2") %>%
+        dplyr::select(name,owner.name,type,uuid,updated_at,geo_json.geometry.type,geo_json.type,created_at,notes,has_active_shares,geometry) %>%
         as.data.frame()
       return(parsed)
     }else{
       parsed <- parsed %>%
-        dplyr::select(name,type,uuid,updated_at,geo_json.geometry.type,geo_json.type,created_at,has_active_shares) %>%
+        coords_as_sf(.,"geo_json.geometry.coordinates1","geo_json.geometry.coordinates2") %>%
+        dplyr::select(name,owner.name,type,uuid,updated_at,geo_json.geometry.type,geo_json.type,created_at,has_active_shares,geometry) %>%
         as.data.frame()
       return(parsed)
     }

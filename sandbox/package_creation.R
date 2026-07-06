@@ -35,6 +35,9 @@ usethis::use_data(BorahPeak_kml,internal = F,overwrite = T)
 
 
 ## Github
+usethis::use_git()
 usethis::use_github()
+usethis::pr_resume()
+usethis::pr_init("working")
 remotes::install_github("r2j2ritson/ronxmaps")
 
