@@ -46,6 +46,6 @@ remotes::install_github("r2j2ritson/ronxmaps")
 # git commit -m "Descriptive commit message."
 # git push origin
 ## Try inside script
-system("git add .")
-system('git commit -m "Automated commit from R script"')
-system("git push origin")
+# system("git add .")
+# system('git commit -m "Automated commit from R script"')
+# system("git push origin")

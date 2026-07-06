@@ -72,8 +72,8 @@ getToken <- function(onx_email = Sys.getenv("ONX_EMAIL"),
   #   })();
   # ", jsonlite::toJSON(onx_email),jsonlite::toJSON(onx_password))
 
-    email_js <- toJSON(onx_email, auto_unbox = TRUE)
-    pass_js  <- toJSON(onx_password, auto_unbox = TRUE)
+    email_js <- jsonlite::toJSON(onx_email, auto_unbox = TRUE)
+    pass_js  <- jsonlite::toJSON(onx_password, auto_unbox = TRUE)
     shadow_js2 <- paste0("
 (function() {
 
@@ -130,11 +130,11 @@ getToken <- function(onx_email = Sys.getenv("ONX_EMAIL"),
       returnByValue = T
     )
 
-    storage <- fromJSON(res$result$value)
+    storage <- jsonlite::fromJSON(res$result$value)
     if(length(storage) == 0){
       stop("Failed to acquire access token.")
     }
-    obj <- fromJSON(storage[[2]])
+    obj <- jsonlite::fromJSON(storage[[2]])
 
     tkn_arg <- list(obj$access_token)
     names(tkn_arg) <- "ONX_TOKEN"
