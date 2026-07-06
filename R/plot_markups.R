@@ -17,15 +17,13 @@ plot_markups <- function(markup_type = c("waypoints", "tracks", "lines", "shapes
     query = list(limit = limit)
   )
   parsed <- purrr::map_dfr(onx_markups,parse_markups) %>%
-    coords_as_sf(.,"geo_json.geometry.coordinates1","geo_json.geometry.coordinates2") %>%
-    dplyr::select(name,owner.name,type,uuid,updated_at,geo_json.geometry.type,geo_json.type,created_at,has_active_shares,geometry) %>%
+    dplyr::select(name,type,uuid,updated_at,geo_json.geometry.type,geo_json.type,created_at,has_active_shares,geometry) %>%
     as.data.frame() %>%
     sf::st_as_sf() %>%
     terra::vect()
   if(interactive){
-    terra::plet(foo)
-    return(parsed)
+    terra::plet(parsed)
   }else{
-    terra::plot(foo)
+    terra::plot(parsed)
   }
 }
