@@ -14,6 +14,12 @@ ronxmaps::onx_subscriptions()
 ronxmaps::onx_list_markups()
 ronxmaps::onx_content_collections()
 
+folders <- ronxmaps::onx_content_collections(parse = T,include_entities = F)
+folders
+
+delete_folder(uuid = folders$uuid[[3]])
+
+ff <- parse_folders(folders[[2]])
 
 foo <- ronxmaps::onx_list_markups(parse = T) %>%
   sf::st_as_sf() %>%

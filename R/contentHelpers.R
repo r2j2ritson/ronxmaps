@@ -93,14 +93,15 @@ onx_list_markups <- function(markup_type = c("waypoints", "tracks", "shapes"),
   }
 }
 
-#' Helper function for parsing markup files
-#' @export parse_markups
+#' Helper function for parsing folder information
+#' @export parse_folders
 parse_folders <- function(x){
   out <- as.data.frame(unlist(x)) %>%
     tibble::rownames_to_column(.) %>%
     `colnames<-`(.,c("rowname","vals")) %>%
     tidyr::pivot_wider(names_from = rowname,
                        values_from = vals) %>%
+    #unname() %>%
     as.data.frame()
   return(out)
 }
