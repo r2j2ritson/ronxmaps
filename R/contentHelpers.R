@@ -44,6 +44,7 @@ parse_markups <- function(x){
     `colnames<-`(.,c("rowname","vals")) %>%
     tidyr::pivot_wider(names_from = rowname,
                        values_from = vals) %>%
+    dplyr::mutate(geometry = sf::st_read(jsonlite::toJSON(x, auto_unbox = TRUE), quiet = T)[["geometry"]]) %>%
     as.data.frame()
   return(out)
 }
@@ -57,7 +58,7 @@ parse_markups <- function(x){
 #' @param include.notes Boolean whether to attempt to include 'notes' column. Warning, if none of the features have notes, then function will fail.
 #' @return Parsed JSON response from the OnX markup endpoint.
 #' @export
-onx_list_markups <- function(markup_type = c("waypoints", "tracks", "lines", "shapes"),
+onx_list_markups <- function(markup_type = c("waypoints", "tracks", "shapes"),
                              limit = 1000,
                              token = Sys.getenv("ONX_TOKEN", unset = ""),
                              parse = T, include.notes = F) {
@@ -71,14 +72,14 @@ onx_list_markups <- function(markup_type = c("waypoints", "tracks", "lines", "sh
     parsed <- purrr::map_dfr(onx_markups,parse_markups)
     if(include.notes){
       parsed <- parsed %>%
-        coords_as_sf(.,"geo_json.geometry.coordinates1","geo_json.geometry.coordinates2") %>%
-        dplyr::select(name,owner.name,type,uuid,updated_at,geo_json.geometry.type,geo_json.type,created_at,notes,has_active_shares,geometry) %>%
+        #coords_as_sf(.,"geo_json.geometry.coordinates1","geo_json.geometry.coordinates2") %>%
+        dplyr::select(name,type,uuid,updated_at,geo_json.geometry.type,geo_json.type,created_at,notes,has_active_shares,geometry) %>%
         as.data.frame()
       return(parsed)
     }else{
       parsed <- parsed %>%
-        coords_as_sf(.,"geo_json.geometry.coordinates1","geo_json.geometry.coordinates2") %>%
-        dplyr::select(name,owner.name,type,uuid,updated_at,geo_json.geometry.type,geo_json.type,created_at,has_active_shares,geometry) %>%
+        #coords_as_sf(.,"geo_json.geometry.coordinates1","geo_json.geometry.coordinates2") %>%
+        dplyr::select(name,type,uuid,updated_at,geo_json.geometry.type,geo_json.type,created_at,has_active_shares,geometry) %>%
         as.data.frame()
       return(parsed)
     }

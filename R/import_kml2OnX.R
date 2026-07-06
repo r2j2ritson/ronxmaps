@@ -43,12 +43,6 @@ import_kml2OnX <- function(file,
     httr2::req_body_multipart(type = "kml",
                               file = curl::form_file(file, type = "application/octet-stream"))
 
-
-  httr2::request(onx_api_base()) |>
-    httr2::req_url_path_append("v2/subscriptions") |>
-    httr2::req_headers(!!!onx_auth_headers(token)) |>
-    httr2::req_perform()
-
   req <- req |>
     httr2::req_headers(`Content-Type` = NULL)
   req <- req |> httr2::req_options(verbose = T)

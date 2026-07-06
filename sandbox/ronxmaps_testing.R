@@ -13,17 +13,47 @@ ronxmaps::onx_subscriptions()
 ronxmaps::onx_list_markups()
 ronxmaps::onx_content_collections()
 
-foo <- ronxmaps::onx_list_markups(parse = F)
-foo
-foo[[1]]
 
+foo <- ronxmaps::onx_list_markups(parse = T) %>%
+  sf::st_as_sf() %>%
+  terra::vect()
+terra::plot(foo)
+terra::plet(foo)
+
+foo2 <- foo[which(foo$name == "67P"),]
+
+foo <- ronxmaps::onx_list_markups(markup_type = c("waypoints","shapes"),parse=T)
 parsed <- purrr::map_dfr(foo,parse_markups)
-parsed
 
-foo_shp <- coords_as_sf(parsed,"geo_json.geometry.coordinates1","geo_json.geometry.coordinates2")
-plot(foo_shp$geometry)
+foo2 <- foo[[1]]
 
-remotes::install_github("rspatial/terra")
-foo_vect <- terra::vect(foo_shp)
-terra::plot(foo_vect)
-unique(parsed$type)
+writeLines(jsonlite::toJSON(foo[[1]], auto_unbox = TRUE), "temp.geojson")
+x <- st_read("temp.geojson", quiet = T)
+x
+plot(x)
+
+y <- sf::st_read(jsonlite::toJSON(foo[[1]], auto_unbox = TRUE), quiet = T)
+
+
+
+
+
+library(terra)
+
+
+library(leaflet)
+foo_vect1 <- terra::vect(foo[,"geometry"])
+plot(foo_vect1)
+plot(foo$geometry)
+terra::plet(foo_vect1)
+
+foo2 <- foo[1,]
+leaflet(data = foo2$geometry) %>%
+  addTiles() %>%
+  addMarkers()
+
+library(leaflet)
+m <- terra::plet(foo_vect)
+htmlwidgets::saveWidget(m,"map.html")
+viewer <- getOption("viewer")
+viewer("map.html")

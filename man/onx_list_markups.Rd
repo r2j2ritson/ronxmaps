@@ -5,7 +5,7 @@
 \title{List user markups by type.}
 \usage{
 onx_list_markups(
-  markup_type = c("waypoints", "tracks", "lines", "shapes"),
+  markup_type = c("waypoints", "tracks", "shapes"),
   limit = 1000,
   token = Sys.getenv("ONX_TOKEN", unset = ""),
   parse = T,
