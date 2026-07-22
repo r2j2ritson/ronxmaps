@@ -42,13 +42,6 @@ Sys.getenv('ONX_EMAIL')
 Sys.getenv('ONX_PASSWORD')
 ```
 
-
-```{r secret, include=F, eval=TRUE}
-ronxmaps::setCredentials(onx_email = "robert.ritson@idfg.idaho.gov",
-                         onx_password = "IDFG2020")
-```
-
-
 ### Generate access token
 Now that your information is discretely stored, you can then generate an access token for the OnX Web Maps API. This function can be re-run at anytime to generate a new access token or check how much more time is left on your current token. This may need to be repeated a few times before token is correctly acquired.
 ```{r token,include=TRUE,eval=T}
@@ -70,32 +63,32 @@ Congratulations! You officially have access to the OnX Maps Web API through R!
 ## Down to business: Managing your Markups!
 
 ### View Content
-```{r profile,include=T,eval=T}
+```{r view markup,include=T,eval=T}
 ronxmaps::onx_subscriptions()
 ```
 
 ### Save Content
-```{r profile,include=T,eval=T}
+```{r export markup,include=T,eval=T}
 ronxmaps::onx_subscriptions()
 ```
 
 ### Import Content
-```{r profile,include=T,eval=T}
+```{r import markup,include=T,eval=T}
 ronxmaps::onx_subscriptions()
 ```
 
 ### Delete Content
-```{r profile,include=T,eval=T}
+```{r delete markup,include=T,eval=T}
 ronxmaps::onx_subscriptions()
 ```
 
 ### View folders
-```{r profile,include=T,eval=T}
+```{r view folder,include=T,eval=T}
 ronxmaps::onx_subscriptions()
 ```
 
 ### Delete folder
-```{r profile,include=T,eval=T}
+```{r delete folder,include=T,eval=T}
 ronxmaps::onx_subscriptions()
 ```
 

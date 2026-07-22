@@ -382,18 +382,74 @@ before token is correctly acquired.</p>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">onx_password =</span> <span class="fu">Sys.getenv</span>(<span class="st">&#39;ONX_PASSWORD&#39;</span>),</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">url =</span> ronxmaps<span class="sc">::</span><span class="fu">onx_login_base</span>(), </span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">verbose =</span> T)</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Old Access Token Expires in  24 minutes.</span></span></code></pre></div>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Old Access Token Expires in  14 minutes.</span></span></code></pre></div>
 </div>
 <div id="view-basic-profile-and-subscription-information" class="section level3">
 <h3>View basic profile and subscription information</h3>
 <p>If successful, you should now be able to check your profile
-information to confirm you can access the API.</p>
+information to confirm you have access to the API.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>ronxmaps<span class="sc">::</span><span class="fu">onx_subscriptions</span>()</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 1 × 6</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Hunt  Hunt_Started         Hunt_Expires         Offroad Fish  Backcountry</span></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;                &lt;chr&gt;                &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;      </span></span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 elite 2026-01-15T18:55:50Z 2027-01-15T23:59:59Z basic   basic basic</span></span></code></pre></div>
+<p>Congratulations! You officially have access to the OnX Maps Web API
+through R!</p>
 </div>
+</div>
+<div id="down-to-business-managing-your-markups" class="section level2">
+<h2>Down to business: Managing your Markups!</h2>
+<div id="view-content" class="section level3">
+<h3>View Content</h3>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>ronxmaps<span class="sc">::</span><span class="fu">onx_subscriptions</span>()</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 1 × 6</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Hunt  Hunt_Started         Hunt_Expires         Offroad Fish  Backcountry</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;                &lt;chr&gt;                &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;      </span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 elite 2026-01-15T18:55:50Z 2027-01-15T23:59:59Z basic   basic basic</span></span></code></pre></div>
+</div>
+<div id="save-content" class="section level3">
+<h3>Save Content</h3>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>ronxmaps<span class="sc">::</span><span class="fu">onx_subscriptions</span>()</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 1 × 6</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Hunt  Hunt_Started         Hunt_Expires         Offroad Fish  Backcountry</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;                &lt;chr&gt;                &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;      </span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 elite 2026-01-15T18:55:50Z 2027-01-15T23:59:59Z basic   basic basic</span></span></code></pre></div>
+</div>
+<div id="import-content" class="section level3">
+<h3>Import Content</h3>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>ronxmaps<span class="sc">::</span><span class="fu">onx_subscriptions</span>()</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 1 × 6</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Hunt  Hunt_Started         Hunt_Expires         Offroad Fish  Backcountry</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;                &lt;chr&gt;                &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;      </span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 elite 2026-01-15T18:55:50Z 2027-01-15T23:59:59Z basic   basic basic</span></span></code></pre></div>
+</div>
+<div id="delete-content" class="section level3">
+<h3>Delete Content</h3>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>ronxmaps<span class="sc">::</span><span class="fu">onx_subscriptions</span>()</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 1 × 6</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Hunt  Hunt_Started         Hunt_Expires         Offroad Fish  Backcountry</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;                &lt;chr&gt;                &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;      </span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 elite 2026-01-15T18:55:50Z 2027-01-15T23:59:59Z basic   basic basic</span></span></code></pre></div>
+</div>
+<div id="view-folders" class="section level3">
+<h3>View folders</h3>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>ronxmaps<span class="sc">::</span><span class="fu">onx_subscriptions</span>()</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 1 × 6</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Hunt  Hunt_Started         Hunt_Expires         Offroad Fish  Backcountry</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;                &lt;chr&gt;                &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;      </span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 elite 2026-01-15T18:55:50Z 2027-01-15T23:59:59Z basic   basic basic</span></span></code></pre></div>
+</div>
+<div id="delete-folder" class="section level3">
+<h3>Delete folder</h3>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>ronxmaps<span class="sc">::</span><span class="fu">onx_subscriptions</span>()</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 1 × 6</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Hunt  Hunt_Started         Hunt_Expires         Offroad Fish  Backcountry</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;                &lt;chr&gt;                &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;      </span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 elite 2026-01-15T18:55:50Z 2027-01-15T23:59:59Z basic   basic basic</span></span></code></pre></div>
+</div>
+</div>
+<div id="whats-next" class="section level2">
+<h2>What’s next?</h2>
 </div>
 
 
