@@ -1,0 +1,24 @@
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>/404.html</loc></url>
+<url><loc>/authors.html</loc></url>
+<url><loc>/index.html</loc></url>
+<url><loc>/reference/coords_as_sf.html</loc></url>
+<url><loc>/reference/delete_markup.html</loc></url>
+<url><loc>/reference/getToken.html</loc></url>
+<url><loc>/reference/import_kml2OnX.html</loc></url>
+<url><loc>/reference/index.html</loc></url>
+<url><loc>/reference/onx_api_base.html</loc></url>
+<url><loc>/reference/onx_api_request.html</loc></url>
+<url><loc>/reference/onx_auth_headers.html</loc></url>
+<url><loc>/reference/onx_content_collections.html</loc></url>
+<url><loc>/reference/onx_list_markups.html</loc></url>
+<url><loc>/reference/onx_login_from_token.html</loc></url>
+<url><loc>/reference/onx_profile.html</loc></url>
+<url><loc>/reference/onx_subscriptions.html</loc></url>
+<url><loc>/reference/parse_folders.html</loc></url>
+<url><loc>/reference/parse_html.html</loc></url>
+<url><loc>/reference/parse_markups.html</loc></url>
+<url><loc>/reference/plot_markups.html</loc></url>
+<url><loc>/reference/setCredentials.html</loc></url>
+</urlset>
+
