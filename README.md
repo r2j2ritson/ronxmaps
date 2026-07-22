@@ -35,5 +35,6 @@ ronxmaps::import_kml2OnX(file = file, token = Sys.getenv("ONX_TOKEN", unset = ""
 
 ## Planned functions under development
 - formatting and saving shapefiles as KML files
-- folder management
+- folder management (creation, deletion, adding markups to folders, etc.)
 - sharing files with other users
+- Vignette and demonstrated use cases
