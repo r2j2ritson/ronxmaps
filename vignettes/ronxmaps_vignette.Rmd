@@ -63,34 +63,68 @@ Congratulations! You officially have access to the OnX Maps Web API through R!
 ## Down to business: Managing your Markups!
 
 ### View Content
-```{r view markup,include=T,eval=T}
-ronxmaps::onx_subscriptions()
+```{r view pts,include=T,eval=T}
+myPts <- ronxmaps::onx_list_markups(markup_type = "waypoints",parse=T)
+head(myPts)
+```
+
+```{r view pts raw,include=T,eval=T}
+myPts_raw <- ronxmaps::onx_list_markups(markup_type = "waypoints",parse=F)
+myPts_raw[[100]]
+```
+
+
+
+```{r view track,include=T,eval=T}
+myTracks <- ronxmaps::onx_list_markups(markup_type = "tracks",parse=T)
+head(myTracks)
+```
+
+```{r view polys,include=T,eval=T}
+myPolys <- ronxmaps::onx_list_markups(markup_type = "shapes",parse=T)
+head(myPolys)
+```
+
+```{r plot markup interactive,include=T,eval=T}
+ronxmaps::plot_markups(markup_type = "waypoints",interactive = T)
+```
+
+```{r plot markup,include=T,eval=T}
+ronxmaps::plot_markups(markup_type = "tracks",interactive = F)
 ```
 
 ### Save Content
-```{r export markup,include=T,eval=T}
-ronxmaps::onx_subscriptions()
+```{r convert to sf,include=T,eval=T}
+polys_sf <- sf::st_as_sf(myPolys)
+head(polys_sf)
+
+plot(polys_sf[1,"geometry"])
+```
+
+```{r export markup,eval=F}
+sf::st_write(polys_sf,"myOnXPolys.shp")
 ```
 
 ### Import Content
-```{r import markup,include=T,eval=T}
-ronxmaps::onx_subscriptions()
+The package includes several internal files for testing uploads (a point `BorahPeak_kml`, a track `BorahPeakTrail_kml`, and a polygon`BorahPeakUSGSQuad_kml`).
+```{r import markup,include=T,eval=F}
+test_file <- ronxmaps::BorahPeak_kml
+sf::st_write(test_file,"test_file.kml")
+file <- file.path(getwd(),"test_file.kml")
+import_kml2OnX(file = file, token = Sys.getenv("ONX_TOKEN", unset = ""))
 ```
 
 ### Delete Content
-```{r delete markup,include=T,eval=T}
-ronxmaps::onx_subscriptions()
+```{r delete markup,include=T,eval=F}
+ronxmaps::delete_markup(myPolys$uuid[1])
 ```
 
 ### View folders
 ```{r view folder,include=T,eval=T}
-ronxmaps::onx_subscriptions()
+folders <- ronxmaps::onx_content_collections(parse = T,include_entities = F)
+head(folders)
 ```
 
-### Delete folder
-```{r delete folder,include=T,eval=T}
-ronxmaps::onx_subscriptions()
-```
 
 
 ## What's next?
